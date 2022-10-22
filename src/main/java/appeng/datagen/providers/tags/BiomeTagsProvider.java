@@ -26,7 +26,7 @@ import appeng.worldgen.meteorite.MeteoriteStructure;
 
 public class BiomeTagsProvider extends net.minecraft.data.tags.BiomeTagsProvider implements IAE2DataProvider {
     public BiomeTagsProvider(DataGenerator generator) {
-        super(generator);
+        super(generator.getVanillaPackOutput());
     }
 
     @Override

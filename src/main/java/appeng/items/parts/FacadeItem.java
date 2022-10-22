@@ -20,7 +20,6 @@ package appeng.items.parts;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.NonNullList;
 import net.minecraft.core.Registry;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -134,7 +133,8 @@ public class FacadeItem extends AEBaseItem implements IFacadeItem, AEToolItem {
     }
 
     @Override
-    public void fillItemCategory(CreativeModeTab group, NonNullList<ItemStack> items) {
+    public void addToMainCreativeTab(CreativeModeTab.Output output) {
+        // Don't show in creative mode, since it's not useful without NBT
     }
 
     public ItemStack createFacadeForItem(ItemStack itemStack, boolean returnItem) {

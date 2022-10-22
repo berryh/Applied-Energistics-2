@@ -21,6 +21,7 @@ package appeng.datagen;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
+import appeng.datagen.providers.WorldGenProvider;
 import appeng.datagen.providers.advancements.AdvancementGenerator;
 import appeng.datagen.providers.localization.LocalizationProvider;
 import appeng.datagen.providers.loot.BlockDropProvider;
@@ -50,8 +51,14 @@ public class AE2DataGenerators {
     public static void onGatherData(DataGenerator generator, ExistingFileHelper existingFileHelper) {
         var localization = new LocalizationProvider(generator);
 
+        var output = generator.getVanillaPackOutput();
+        var outputFolder = output.getOutputFolder();
+
+        // Worldgen et al
+        generator.addProvider(true, new WorldGenProvider(output));
+
         // Loot
-        generator.addProvider(true, new BlockDropProvider(generator.getOutputFolder()));
+        generator.addProvider(true, new BlockDropProvider(outputFolder));
 
         // Tags
         BlockTagsProvider blockTagsProvider = new BlockTagsProvider(generator);

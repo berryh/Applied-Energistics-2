@@ -37,7 +37,7 @@ public class EntropyRecipes extends AE2RecipeProvider {
     }
 
     @Override
-    protected void buildAE2CraftingRecipes(Consumer<FinishedRecipe> consumer) {
+    public void buildRecipes(Consumer<FinishedRecipe> consumer) {
         buildCoolRecipes(consumer);
         buildHeatRecipes(consumer);
     }

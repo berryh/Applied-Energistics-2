@@ -8,7 +8,7 @@ import appeng.init.InitVillager;
 
 public class PoiTypeTagsProvider extends net.minecraft.data.tags.PoiTypeTagsProvider implements IAE2DataProvider {
     public PoiTypeTagsProvider(DataGenerator generator) {
-        super(generator);
+        super(generator.getVanillaPackOutput());
     }
 
     @Override

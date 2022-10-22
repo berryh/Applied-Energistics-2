@@ -33,7 +33,6 @@ import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.NonNullList;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -247,9 +246,7 @@ public class CableBusBlock extends AEBaseEntityBlock<CableBusBlockEntity> implem
         return false;
     }
 
-    @Override
-    @Environment(EnvType.CLIENT)
-    public void fillItemCategory(CreativeModeTab group, NonNullList<ItemStack> itemStacks) {
+    public void addToMainCreativeTab(CreativeModeTab.Output output) {
         // do nothing
     }
 

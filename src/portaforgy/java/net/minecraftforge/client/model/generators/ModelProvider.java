@@ -35,6 +35,7 @@ import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.HashCache;
 import net.minecraft.data.DataProvider;
+import net.minecraft.data.PackOutput;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.common.data.ExistingFileHelper;
@@ -57,6 +58,7 @@ public abstract class ModelProvider<T extends ModelBuilder<T>> implements DataPr
     public final Map<ResourceLocation, T> generatedModels = new HashMap<>();
     @VisibleForTesting
     public final ExistingFileHelper existingFileHelper;
+    private final PackOutput output;
 
     protected abstract void registerModels();
 
@@ -71,6 +73,7 @@ public abstract class ModelProvider<T extends ModelBuilder<T>> implements DataPr
         this.factory = factory;
         Preconditions.checkNotNull(existingFileHelper);
         this.existingFileHelper = existingFileHelper;
+        this.output = generator.getVanillaPackOutput();
     }
 
     public ModelProvider(DataGenerator generator, String modid, String folder, BiFunction<ResourceLocation, ExistingFileHelper, T> builderFromModId, ExistingFileHelper existingFileHelper) {
@@ -382,6 +385,6 @@ public abstract class ModelProvider<T extends ModelBuilder<T>> implements DataPr
 
     private Path getPath(T model) {
         ResourceLocation loc = model.getLocation();
-        return generator.getOutputFolder().resolve("assets/" + loc.getNamespace() + "/models/" + loc.getPath() + ".json");
+        return output.getOutputFolder().resolve("assets/" + loc.getNamespace() + "/models/" + loc.getPath() + ".json");
     }
 }

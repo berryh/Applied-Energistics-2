@@ -20,7 +20,6 @@ package appeng.datagen.providers.tags;
 
 import net.minecraft.core.Registry;
 import net.minecraft.data.DataGenerator;
-import net.minecraft.data.tags.BlockTagsProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
@@ -38,7 +37,7 @@ import appeng.datagen.providers.IAE2DataProvider;
 public class ItemTagsProvider extends net.minecraft.data.tags.ItemTagsProvider implements IAE2DataProvider {
 
     public ItemTagsProvider(DataGenerator dataGenerator, BlockTagsProvider blockTagsProvider) {
-        super(dataGenerator, blockTagsProvider);
+        super(dataGenerator.getVanillaPackOutput(), blockTagsProvider);
     }
 
     @Override

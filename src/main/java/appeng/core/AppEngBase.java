@@ -116,7 +116,7 @@ public abstract class AppEngBase implements AppEng {
 
         InitKeyTypes.init();
 
-        CreativeTab.init();
+        MainCreativeTab.init();
 
         // Initialize items in order
         AEItems.init();

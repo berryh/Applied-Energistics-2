@@ -558,7 +558,7 @@ public abstract class BlockStateProvider implements DataProvider {
 
     private void saveBlockState(CachedOutput cache, JsonObject stateJson, Block owner) {
         ResourceLocation blockName = Preconditions.checkNotNull(getRegistryName(owner));
-        Path mainOutput = generator.getOutputFolder();
+        Path mainOutput = generator.getVanillaPackOutput().getOutputFolder();
         String pathSuffix = "assets/" + blockName.getNamespace() + "/blockstates/" + blockName.getPath() + ".json";
         Path outputPath = mainOutput.resolve(pathSuffix);
         try {

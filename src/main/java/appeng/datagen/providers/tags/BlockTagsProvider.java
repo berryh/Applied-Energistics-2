@@ -36,9 +36,9 @@ import appeng.core.definitions.AEBlocks;
 import appeng.core.definitions.BlockDefinition;
 import appeng.datagen.providers.IAE2DataProvider;
 
-public class BlockTagsProvider extends net.minecraft.data.tags.BlockTagsProvider implements IAE2DataProvider {
+public class BlockTagsProvider extends TagsProvider<Block> implements IAE2DataProvider {
     public BlockTagsProvider(DataGenerator generator) {
-        super(generator);
+        super(generator.getVanillaPackOutput(), Registry.BLOCK);
     }
 
     @Override

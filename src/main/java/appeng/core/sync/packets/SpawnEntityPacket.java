@@ -12,6 +12,7 @@ import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.core.Registry;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.protocol.Packet;
+import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -113,14 +114,16 @@ public class SpawnEntityPacket extends BasePacket {
         }
     }
 
-    public static <T extends Entity & ICustomEntity> Packet<?> create(T entity) {
+    @SuppressWarnings("unchecked")
+    public static <T extends Entity & ICustomEntity> Packet<ClientGamePacketListener> create(T entity) {
         // Not having this typed local variable will lead to a JVM bug because
         // the method reference will have a target type of "Entity" and not
         // "ICustomEntity"
         @SuppressWarnings("UnnecessaryLocalVariable")
         ICustomEntity customEntity = entity;
         SpawnEntityPacket packet = new SpawnEntityPacket(entity, customEntity::writeAdditionalSpawnData);
-        return ServerPlayNetworking.createS2CPacket(BasePacket.CHANNEL, packet.getPayload());
+        return (Packet<ClientGamePacketListener>) ServerPlayNetworking.createS2CPacket(BasePacket.CHANNEL,
+                packet.getPayload());
     }
 
 }

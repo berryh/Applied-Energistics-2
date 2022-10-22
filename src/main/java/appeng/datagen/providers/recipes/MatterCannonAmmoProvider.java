@@ -37,7 +37,7 @@ public class MatterCannonAmmoProvider extends AE2RecipeProvider {
     }
 
     @Override
-    protected void buildAE2CraftingRecipes(Consumer<FinishedRecipe> consumer) {
+    public void buildRecipes(Consumer<FinishedRecipe> consumer) {
         registerAmmoTag(consumer, "nuggets/meatraw", new ResourceLocation("c:meatraw_nuggets"), 32);
         registerAmmoTag(consumer, "nuggets/meatcooked", new ResourceLocation("c:meatcooked_nuggets"), 32);
         registerAmmoTag(consumer, "nuggets/meat", new ResourceLocation("c:meat_nuggets"), 32);

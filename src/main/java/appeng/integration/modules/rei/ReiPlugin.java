@@ -29,6 +29,7 @@ import com.google.common.collect.ImmutableList;
 
 import net.minecraft.client.renderer.Rect2i;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.flag.FeatureFlagSet;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 
@@ -187,7 +188,8 @@ public class ReiPlugin implements REIClientPlugin {
         registry.removeEntryIf(this::shouldEntryBeHidden);
 
         if (AEConfig.instance().isEnableFacadesInJEI()) {
-            registry.addEntries(EntryIngredients.ofItemStacks(FacadeCreativeTab.getSubTypes()));
+            registry.addEntries(
+                    EntryIngredients.ofItemStacks(FacadeCreativeTab.getGroup().getDisplayItems(FeatureFlagSet.of())));
         }
     }
 

@@ -18,7 +18,6 @@
 
 package appeng.client.render.tesr;
 
-import com.google.common.collect.ImmutableList;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
@@ -54,8 +53,6 @@ public final class InscriberTESR implements BlockEntityRenderer<InscriberBlockEn
 
     private static final Material TEXTURE_INSIDE = new Material(InventoryMenu.BLOCK_ATLAS,
             new ResourceLocation(AppEng.MOD_ID, "block/inscriber_inside"));
-
-    public static final ImmutableList<Material> SPRITES = ImmutableList.of(TEXTURE_INSIDE);
 
     public InscriberTESR(BlockEntityRendererProvider.Context context) {
     }

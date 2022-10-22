@@ -78,7 +78,7 @@ public class AdvancementGenerator implements IAE2DataProvider {
 
     @Override
     public void run(CachedOutput cache) {
-        Path path = this.generator.getOutputFolder();
+        Path path = this.generator.getVanillaPackOutput().getOutputFolder();
         Set<ResourceLocation> set = Sets.newHashSet();
         Consumer<Advancement> consumer = (advancement) -> {
             if (!set.add(advancement.getId())) {

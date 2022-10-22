@@ -4,6 +4,7 @@ import java.util.function.Consumer;
 
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.recipes.FinishedRecipe;
+import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.UpgradeRecipeBuilder;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
@@ -21,7 +22,7 @@ public class SmithingRecipes extends AE2RecipeProvider {
     }
 
     @Override
-    protected void buildAE2CraftingRecipes(Consumer<FinishedRecipe> consumer) {
+    public void buildRecipes(Consumer<FinishedRecipe> consumer) {
         fluixSmithing(consumer, ConventionTags.QUARTZ_AXE, AEItems.FLUIX_AXE);
         fluixSmithing(consumer, ConventionTags.QUARTZ_HOE, AEItems.FLUIX_HOE);
         fluixSmithing(consumer, ConventionTags.QUARTZ_PICK, AEItems.FLUIX_PICK);
@@ -32,7 +33,8 @@ public class SmithingRecipes extends AE2RecipeProvider {
     private void fluixSmithing(Consumer<FinishedRecipe> consumer, TagKey<Item> quartzTool,
             ItemDefinition<?> fluixTool) {
         UpgradeRecipeBuilder
-                .smithing(Ingredient.of(quartzTool), Ingredient.of(AEBlocks.FLUIX_BLOCK), fluixTool.asItem())
+                .smithing(Ingredient.of(quartzTool), Ingredient.of(AEBlocks.FLUIX_BLOCK), RecipeCategory.MISC,
+                        fluixTool.asItem())
                 .unlocks("has_crystals/fluix", has(ConventionTags.ALL_FLUIX))
                 .save(consumer, AppEng.makeId("tools/" + getItemName(fluixTool)));
     }

@@ -16,6 +16,7 @@ import net.minecraft.client.renderer.Rect2i;
 import net.minecraft.core.Registry;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.flag.FeatureFlagSet;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeManager;
@@ -257,7 +258,7 @@ public class JEIPlugin implements IModPlugin {
 
         if (!AEConfig.instance().isEnableFacadesInJEI()) {
             jeiRuntime.getIngredientManager().removeIngredientsAtRuntime(VanillaTypes.ITEM_STACK,
-                    FacadeCreativeTab.getSubTypes());
+                    FacadeCreativeTab.getGroup().getDisplayItems(FeatureFlagSet.of()));
         }
     }
 

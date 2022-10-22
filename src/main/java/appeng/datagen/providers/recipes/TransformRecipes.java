@@ -51,7 +51,7 @@ public class TransformRecipes extends AE2RecipeProvider {
     }
 
     @Override
-    protected void buildAE2CraftingRecipes(Consumer<FinishedRecipe> consumer) {
+    public void buildRecipes(Consumer<FinishedRecipe> consumer) {
         TransformCircumstance water = TransformCircumstance.fluid(FluidTags.WATER);
         // Fluix crystals
         transform(AEItems.FLUIX_CRYSTAL.asItem(), 2, water,

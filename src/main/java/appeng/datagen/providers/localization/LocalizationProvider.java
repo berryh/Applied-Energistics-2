@@ -160,7 +160,7 @@ public class LocalizationProvider implements IAE2DataProvider {
         wasSaved = true;
 
         try {
-            var path = this.generator.getOutputFolder().resolve("assets/ae2/lang/en_us.json");
+            var path = this.generator.getVanillaPackOutput().getOutputFolder().resolve("assets/ae2/lang/en_us.json");
 
             // Dump the translation in ascending order
             var sorted = new TreeMap<>(localizations);

@@ -7,6 +7,7 @@ import net.minecraft.core.NonNullList;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.CraftingBookCategory;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.ShapedRecipe;
 
@@ -103,7 +104,7 @@ class FacadeRegistryPlugin implements IRecipeManagerPlugin {
         var output = result.copy();
         output.setCount(4);
 
-        return new ShapedRecipe(id, "", 3, 3, ingredients, output);
+        return new ShapedRecipe(id, "", CraftingBookCategory.MISC, 3, 3, ingredients, output);
     }
 
     @Override

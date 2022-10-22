@@ -25,7 +25,7 @@ public class ChargerRecipes extends AE2RecipeProvider {
     }
 
     @Override
-    protected void buildAE2CraftingRecipes(Consumer<FinishedRecipe> consumer) {
+    public void buildRecipes(Consumer<FinishedRecipe> consumer) {
 
         charge(consumer, "charged_certus_quartz_crystal", AEItems.CERTUS_QUARTZ_CRYSTAL.asItem(),
                 AEItems.CERTUS_QUARTZ_CRYSTAL_CHARGED.asItem());

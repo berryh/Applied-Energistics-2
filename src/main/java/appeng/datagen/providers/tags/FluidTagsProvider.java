@@ -26,7 +26,7 @@ import appeng.datagen.providers.IAE2DataProvider;
 public class FluidTagsProvider extends net.minecraft.data.tags.FluidTagsProvider implements IAE2DataProvider {
 
     public FluidTagsProvider(DataGenerator generator) {
-        super(generator);
+        super(generator.getVanillaPackOutput());
     }
 
     @Override

@@ -95,7 +95,7 @@ public class TestMeteoritesCommand implements ISubCommand {
 
         var generator = level.getChunkSource().getGenerator();
 
-        var structure = level.registryAccess().ownedRegistryOrThrow(
+        var structure = level.registryAccess().registryOrThrow(
                 Registry.STRUCTURE_REGISTRY).get(MeteoriteStructure.KEY);
 
         // Find all meteorites in the given rectangle
