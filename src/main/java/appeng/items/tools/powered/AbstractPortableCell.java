@@ -88,7 +88,7 @@ public abstract class AbstractPortableCell extends AEBasePoweredItem
 
     @Override
     public boolean shouldCauseReequipAnimation(ItemStack oldStack, ItemStack newStack, boolean slotChanged) {
-        return false;
+        return slotChanged;
     }
 
     @Override
