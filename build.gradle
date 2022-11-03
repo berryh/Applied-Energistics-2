@@ -518,3 +518,8 @@ if (System.getProperty("idea.sync.active") == "true") {
 tasks.withType(GenerateModuleMetadata) {
     enabled = false
 }
+
+
+validateAccessWidener {
+    enabled = false
+}

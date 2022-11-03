@@ -29,6 +29,7 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.BlockPos.MutableBlockPos;
+import net.minecraft.core.HolderGetter;
 import net.minecraft.core.HolderSet;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.RegistryOps;
@@ -66,22 +67,20 @@ public class SpatialStorageChunkGenerator extends ChunkGenerator {
      * If it was not the same object, then the Object->ID lookup would fail since it uses an identity hashmap
      * internally.
      */
-    public static final Codec<SpatialStorageChunkGenerator> CODEC = RecordCodecBuilder
-            .create(instance -> commonCodec(instance)
-                    .and(RegistryOps.retrieveRegistry(Registry.BIOME_REGISTRY)
-                            .forGetter(source -> source.biomeRegistry))
+    public static final Codec<SpatialStorageChunkGenerator> CODEC = RecordCodecBuilder.create(instance ->
+                    instance.group(
+                            RegistryOps.retrieveGetter(Registry.BIOME_REGISTRY)
+                    )
                     .apply(instance, instance.stable(SpatialStorageChunkGenerator::new)));
 
-    private final Registry<Biome> biomeRegistry;
 
     private final NoiseColumn columnSample;
 
     private final BlockState defaultBlockState;
 
-    public SpatialStorageChunkGenerator(Registry<StructureSet> structureSets, Registry<Biome> biomeRegistry) {
-        super(structureSets, Optional.of(HolderSet.direct()), createBiomeSource(biomeRegistry));
+    public SpatialStorageChunkGenerator(HolderGetter<Biome> biomeRegistry) {
+        super(createBiomeSource(biomeRegistry));
         this.defaultBlockState = AEBlocks.MATRIX_FRAME.block().defaultBlockState();
-        this.biomeRegistry = biomeRegistry;
 
         // Vertical sample is mostly used for Feature generation, for those purposes
         // we're all filled with matrix blocks
@@ -95,8 +94,8 @@ public class SpatialStorageChunkGenerator extends ChunkGenerator {
         return CODEC;
     }
 
-    private static FixedBiomeSource createBiomeSource(Registry<Biome> biomeRegistry) {
-        return new FixedBiomeSource(biomeRegistry.getHolderOrThrow(SpatialStorageDimensionIds.BIOME_KEY));
+    private static FixedBiomeSource createBiomeSource(HolderGetter<Biome> biomeRegistry) {
+        return new FixedBiomeSource(biomeRegistry.getOrThrow(SpatialStorageDimensionIds.BIOME_KEY));
     }
 
     @Override
