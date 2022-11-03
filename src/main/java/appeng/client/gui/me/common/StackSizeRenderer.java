@@ -23,7 +23,7 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.Tesselator;
 import com.mojang.math.Matrix4f;
 import com.mojang.math.Transformation;
-import com.mojang.math.Vector3f;
+import org.joml.Vector3f;
 
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.renderer.MultiBufferSource;

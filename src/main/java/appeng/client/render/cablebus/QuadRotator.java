@@ -22,7 +22,7 @@ import java.util.EnumMap;
 
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import com.mojang.math.Quaternion;
-import com.mojang.math.Vector3f;
+import org.joml.Vector3f;
 
 import net.fabricmc.fabric.api.renderer.v1.mesh.MutableQuadView;
 import net.fabricmc.fabric.api.renderer.v1.render.RenderContext;

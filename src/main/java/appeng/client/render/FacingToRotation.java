@@ -23,7 +23,7 @@ import java.util.Locale;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Matrix4f;
 import com.mojang.math.Quaternion;
-import com.mojang.math.Vector3f;
+import org.joml.Vector3f;
 import com.mojang.math.Vector4f;
 
 import net.minecraft.core.Direction;

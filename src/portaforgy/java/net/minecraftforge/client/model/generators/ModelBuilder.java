@@ -48,7 +48,7 @@ import net.minecraft.client.renderer.texture.MissingTextureAtlasSprite;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
-import com.mojang.math.Vector3f;
+import org.joml.Vector3f;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
 /**

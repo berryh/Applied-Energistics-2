@@ -21,7 +21,7 @@ package appeng.client.render.tesr;
 import com.google.common.collect.ImmutableList;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import com.mojang.math.Vector3f;
+import org.joml.Vector3f;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
